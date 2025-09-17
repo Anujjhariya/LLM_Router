@@ -38,22 +38,27 @@ source .venv/bin/activate
 pip install -r requirements.txt
 
 ```
-4. Running the Server
+4. Create .env
+```bash
+
+
+```
+5. Running the Server
 ```bash
 uvicorn main:app --reload
 
 ```
-5. Register a custom model
+6. Register a custom model
 ```bash
 curl -X POST http://127.0.0.1:8000/models/register -H "Authorization: Bearer sk-org3-secret" -H "Content-Type: application/json" -d "{\"model_id\":\"huggingface/my-hf-model\",\"api_type\":\"huggingface\",\"api_url\":\"https://api-inference.huggingface.co/models/myorg/my-hf-model\",\"api_key\":\"hf_xxxxx\",\"request_payload_type\":\"huggingface\",\"allow_others\":true}"
 
 ```
-6. List available models for a client
+7. List available models for a client
 ```bash
 curl -X GET http://127.0.0.1:8000/v1/models -H "Authorization: Bearer sk-org3-secret"
 
 ```
-7. Inference (text generation)
+8. Inference (text generation)
 ```bash
 curl -X POST http://127.0.0.1:8000/inference/huggingface/my-hf-model -H "Authorization: Bearer sk-org3-secret" -H "Content-Type: application/json" -d "{\"inputs\":\"Write a poem about AI.\",\"stream\":false}"
 ```
