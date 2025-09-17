@@ -1,0 +1,48 @@
+organizations:
+  - org_id: org1
+    name: "Org One"
+    client_key: sk-org1-secret
+    provider: ollama
+    provider_api_key: none   # Ollama runs locally, so no key needed
+    allowed_models:
+      - ollama/mistral
+    quota: 1000
+
+  - org_id: org2
+    name: "Org Two"
+    client_key: sk-org2-secret
+    provider: openai
+    provider_api_key: ${OPENAI_API_KEY}
+    allowed_models:
+      - openai/gpt-4o
+    quota: 500
+
+  - org_id: org3
+    name: "Org Three"
+    client_key: sk-org3-secret
+    provider: cohere
+    provider_api_key: ${COHERE_API_KEY}
+    allowed_models:
+      - cohere/chat:command-r
+      - cohere/chat:command-r-plus
+      # - huggingface/my-hf-model
+    quota: 500
+
+
+# NEW SECTION: user-registered custom models
+custom_models:
+  sk-org3-secret:   # client_key of Org Three
+    my-hf-model:    # model_id (user defined)
+      api_type: huggingface
+      api_url: "https://api-inference.huggingface.co/models/myorg/my-hf-model"
+      api_key: ${HF_API_KEY}
+      request_payload_type: huggingface
+      allow_others: true
+
+  sk-org2-secret:
+    my-private-model:
+      api_type: openai
+      api_url: "https://api.openai.com/v1/chat/completions"
+      api_key: ${OPENAI_API_KEY}
+      request_payload_type: openai
+      allow_others: false

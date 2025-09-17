@@ -1,0 +1,13 @@
+[project]
+name = "multi-tenant-router"
+version = "0.1.0"
+description = "Multi-tenant LLM router using LiteLLM + FastAPI"
+requires-python = ">=3.10"
+
+dependencies = [
+    "python-dotenv",
+    "pyyaml",
+    "litellm",
+    "fastapi",
+    "uvicorn"
+]
