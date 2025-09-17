@@ -38,8 +38,13 @@ source .venv/bin/activate
 pip install -r requirements.txt
 
 ```
-4. Create .env
+4. Create .env file
 ```bash
+Add your API keys and secrets:
+
+OPENAI_API_KEY=sk-...
+COHERE_API_KEY=sk-...
+HF_API_KEY=hf-...
 
 
 ```
